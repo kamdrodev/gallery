@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import helmet from "helmet";
 import cors from "cors";
+import axios from "axios";
 
 dotenv.config();
 
@@ -15,10 +16,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(helmet());
 
-app.get("/", (req, res) => {
-  return res.json({
-    message: "Hello World",
-  });
+app.get("/photos", async (req, res, next) => {
+  try {
+    const getPhotosRequest = await axios.get("https://api.unsplash.com/search/photos", {
+      params: {
+        client_id: process.env.UNSPLASH_API_ACCESS_KEY,
+        query: req.query.keyword,
+      },
+    })
+    return res.json({
+      message: "Photos have been fetched",
+      photos: getPhotosRequest.data,
+    });
+  } catch (e) {
+    const customError = new Error("Oops! Something has gone wrong!");
+    return next(customError);
+   }
 });
 
 app.use((err, req, res, next) => {
