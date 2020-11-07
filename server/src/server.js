@@ -34,6 +34,23 @@ app.get("/photos", async (req, res, next) => {
    }
 });
 
+app.get("/photos/:id", async (req, res, next) => {
+  try {
+    const getPhotoRequest = await axios.get(`https://api.unsplash.com/photos/${req.params.id}`, {
+      params: {
+        client_id: process.env.UNSPLASH_API_ACCESS_KEY,
+      },
+    })
+    return res.json({
+      message: "Photos has fetched",
+      photos: getPhotoRequest.data,
+    });
+  } catch (e) {
+    const customError = new Error("Oops! Something has gone wrong!");
+    return next(customError);
+   }
+});
+
 app.use((err, req, res, next) => {
   if (res.headersSent) {
     return next(err);
