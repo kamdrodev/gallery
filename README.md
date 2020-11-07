@@ -1,4 +1,4 @@
-# Photo Search app
+# Photo Search App
 
 A simple application for searching photos using api - unsplash.
 
