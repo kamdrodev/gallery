@@ -78,10 +78,7 @@ export default {
           },
         );
 
-
         this.isCardModalActive = true;
-
-        console.log(`photo: ${this.photo.urls}`)
 
         // this.$buefy.snackbar.open({
         //   message: getPhoto.message,

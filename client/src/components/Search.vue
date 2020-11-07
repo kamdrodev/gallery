@@ -60,7 +60,6 @@ export default {
 
       if (this.keyword.length >= 3) {
 
-
         try {
           const getPhotosProcess = await this.$store.dispatch(
             'photos/getPhotos',
@@ -68,23 +67,19 @@ export default {
               keyword: this.keyword,
             },
           );
-          console.log(this.photos.results);
+
           this.data = [];
           let descriptions = this.photos.results.map(a => a.alt_description);
-          console.log(descriptions)
           this.data = descriptions;
 
-          // console.log('x')
           // this.data = ["smiling woman in shallow focus photography", "closeup photography of woman smiling", "woman with white background", "woman walking in white sand during daytime", "shallow focus photography of woman outdoor during day", "woman surrounded by sunflowers", "woman in brown long-sleeved top standing beside wall", "woman smiling wearing denim jacket", "woman looking sideways leaning on white wall", "woman standing on middle of road"];
 
-          // this.$router.push('/photos');;
-
-          this.$buefy.snackbar.open({
-            message: getPhotosProcess.message,
-            type: 'is-success',
-            position: 'is-top',
-            indefinite: true,
-          })
+          // this.$buefy.snackbar.open({
+          //   message: getPhotosProcess.message,
+          //   type: 'is-success',
+          //   position: 'is-top',
+          //   indefinite: true,
+          // })
 
         } catch (e) {
           console.log(e);
@@ -98,24 +93,16 @@ export default {
       }     
     },
     showPhotos() {
-      console.log("showPhotos");
-      console.log('keyword', this.keyword)
-      console.log(this.$route.path)
-
       if (this.$route.path == '/') {
-
         try {
           this.$store.dispatch('photos/navigateKeyword', {keyword: this.keyword});
         } catch (e) {
 
         }
-
          this.$router.push('/photos');
       } else {
         this.searchPhotos();
       }
-
-     
     }
   }
 };
