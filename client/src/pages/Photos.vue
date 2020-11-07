@@ -1,13 +1,19 @@
 <template>
-  <div class="container">
+  <div class="container is-mobile">
     <div class="columns is-centered">
       <div class="column is-half ">
         <Search></Search>
       </div>
     </div>
-    <div class="columns is-mobile flex-wrap">
-       <div class="column is-half" v-for="photo in photos.results" >
-          <img :src="photo.urls.full" class="img-fit" @click="getPhoto(photo.id)">
+    <div class="columns is-desktop flex-wrap">
+       <div class="column is-desktop is-one-third" v-for="photo in photos.results" >
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+            <img :src="photo.urls.full" class="img-fit" @click="getPhoto(photo.id)">
+              </figure>
+            </div>
+        </div>
       </div>
     </div>
     <b-modal v-model="isCardModalActive" :width="640" scroll="keep" v-if="isCardModalActive">
@@ -107,8 +113,8 @@ export default {
   }
 
   .img-fit {
-    width: 300px;
-    height: 300px;
+    /* width: 300px;
+    height: 300px; */
     object-fit: cover;
   }
 
