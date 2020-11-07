@@ -1,7 +1,6 @@
 <template>
-    <section>
-      <p class="content"><b>Photo App</b> {{ selected }}</p>
-      <b-field label="Find your favourite photo">
+    <section class="search">
+        <p class="title">Find your favourite photo</p>
         <b-autocomplete
           rounded
           v-model="keyword"
@@ -12,6 +11,7 @@
           @keydown.native.enter="showPhotos"
           @select="showPhotos"
           @input="searchPhotos"
+          size="is-large"
           >
           <template slot="empty" v-if="isDropdownVisible">No results found</template>
         </b-autocomplete>
@@ -103,6 +103,7 @@ export default {
       } else {
         this.searchPhotos();
       }
+
     }
   }
 };
@@ -112,6 +113,11 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
+}
+
+.search .title {
+  font-weight: bold;
+  font-size: 36px;
 }
 ul {
   list-style-type: none;

@@ -1,11 +1,11 @@
 <template>
   <div class="container is-mobile">
-    <div class="columns is-centered">
+    <div class="columns is-centered mt-6">
       <div class="column is-half ">
         <Search></Search>
       </div>
     </div>
-    <div class="columns is-desktop flex-wrap">
+    <div class="columns is-desktop flex-wrap mt-6">
        <div class="column is-desktop is-one-third" v-for="photo in photos.results" >
           <div class="card">
             <div class="card-image">
@@ -42,9 +42,6 @@ import Search from './../components/Search.vue';
 
 export default {  
   name: 'Photos',
-  created() {
-    console.log('Router id', this.$route.params.keyword);
-  },
   components: {
     Search
   },
@@ -69,7 +66,6 @@ export default {
   },
   methods: {
     async getPhoto(id) {
-      console.log(`id ${id}`)
       try {
         const getPhoto = await this.$store.dispatch(
           'photos/getPhoto',
@@ -88,7 +84,6 @@ export default {
         // })
 
       } catch (e) {
-        console.log(e);
         this.$buefy.snackbar.open({
           message: e.message,
           type: 'is-warning',
