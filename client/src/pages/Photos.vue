@@ -24,11 +24,19 @@
               </figure>
           </div>
           <div class="card-content">
-              <div class="media">
+              <!-- <div class="media">
                   <div class="media-content">
-                      <p class="title is-4">{{this.photo.user.name}}</p>
+                      <p class="title is-3">{{this.photo.user.name}}</p>
                       <p class="subtitle is-6">{{this.photo.location.name}} </p>
                   </div>
+              </div> -->
+              <div class="card-content">
+                <div class="content">
+                  <p class="title is-4">{{this.photo.user.name}}</p>
+                  <p class="subtitle is-6">{{this.photo.user.portfolio_url}}</p>
+                  <p class="title is-4 mt-6">{{this.photo.description}}</p>
+                  <p class="subtitle is-6">{{this.photo.location.name}}</p>
+                </div>
               </div>
           </div>
       </div>
