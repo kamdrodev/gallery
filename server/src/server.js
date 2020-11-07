@@ -24,6 +24,7 @@ app.get("/photos", async (req, res, next) => {
         query: req.query.keyword,
       },
     })
+    
     return res.json({
       message: "Photos have been fetched",
       photos: getPhotosRequest.data,
@@ -41,8 +42,9 @@ app.get("/photos/:id", async (req, res, next) => {
         client_id: process.env.UNSPLASH_API_ACCESS_KEY,
       },
     })
+
     return res.json({
-      message: "Photos has fetched",
+      message: "Photo has been fetched",
       photos: getPhotoRequest.data,
     });
   } catch (e) {
