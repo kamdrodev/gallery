@@ -36,6 +36,7 @@ Open your browser: [http://localhost:8080](http://localhost:8080)
 <p align="center">
   <img src="./preview/home.png" width="500">
   <img src="./preview/gallery.png" width="500">
+  <img src="./preview/modal.png" width="500">
 </p>
 
 ## License
